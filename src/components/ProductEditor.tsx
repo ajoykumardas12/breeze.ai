@@ -5,9 +5,16 @@ import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai";
 
 export default function ProductEditor(){
     return (
-        <div className="w-[55%] flex flex-col p-6">
+        <div className="w-[55%] flex flex-col px-6 py-2">
             <Controls />
             <Editor />
+            <div className="flex justify-center mt-4">
+                <button
+                    className="px-16 py-2 text-lg bg-brand text-white hover:bg-dark rounded-sm"
+                >
+                    Generate
+                </button>
+            </div>
         </div>
     )
 }
@@ -21,7 +28,7 @@ function Controls(){
     return (
         <div className="w-full flex items-center justify-between text-sm">
             <div>
-                <div className="relative flex flex-col items-center rounded-md border border-1 border-dark bg-light">
+                <div className="relative w-20 flex flex-col items-center rounded-md border border-1 border-dark bg-light">
                     <button 
                         className="px-2 py-1 min-w-[4rem] box-border flex items-center justify-between gap-1 tracking-wider border-light-grey-text" 
                         onClick={() => setIsAspectOpen((prev) => !prev)}
@@ -61,7 +68,7 @@ function Controls(){
 
 function Editor(){
     return (
-        <div className="flex items-center justify-center px-6 py-10">
+        <div className="flex items-center justify-center py-4">
             <div className="w-full bg-light h-96 rounded-lg border border-dark flex items-center justify-center ">
                 <img src="/images/bulb.png" alt="product-image" className="w-48" />
             </div>
