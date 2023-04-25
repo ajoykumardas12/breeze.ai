@@ -13,6 +13,7 @@ export default function ProductLibrary(){
                     <div>Product Library</div>
                 </div>
                 <div className="grid grid-cols-2 gap-2 mt-5">
+                    <AddProduct />
                     {productImages.map((productImage: ProductImageT, index) => {
                         return (
                             <ProductImage key={index} imageSrc={productImage.imageSrc} />
@@ -20,11 +21,22 @@ export default function ProductLibrary(){
                     })}
                 </div>
                 <div className="flex justify-center ">
-                    <button className="px-2 py-1 bg-alternateLight rounded-sm m-1">
+                    <button className="px-2 py-1 bg-alternateLight rounded-sm m-1 mt-2">
                         Load more products
                     </button>
                 </div>
             </div>
+        </div>
+    )
+}
+
+function AddProduct(){
+    return (
+        <div className="w-28 h-28 flex items-center justify-center">
+            <input type="file" name="add-product" accept="image/*" id="add-product" className="hidden" />
+            <label htmlFor="add-product">
+                <img src="/images/add-image.png" alt="Add product" className="w-12 cursor-pointer" />
+            </label>
         </div>
     )
 }
@@ -49,7 +61,7 @@ const productImages = [
 
 function ProductImage(props: ProductImageT){
     return (
-        <div className="w-28 h-28 flex items-center justify-center">
+        <div className="w-28 h-28 flex items-center justify-center cursor-pointer">
             <img 
                 src={props.imageSrc} 
                 alt="product image"

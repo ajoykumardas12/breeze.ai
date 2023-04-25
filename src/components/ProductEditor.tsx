@@ -40,7 +40,7 @@ function Controls(){
                             : <AiFillCaretUp className="text-xs" />
                         }
                     </button>
-                    {isAspectOpen && <div className="absolute top-7 flex flex-col items-start rounded-lg w-full bg-light">
+                    {isAspectOpen && <div className="absolute top-7 flex flex-col items-start rounded-lg w-full bg-alternateLight">
                             {aspectList.map((item, index) => 
                                 <option key={index} value={item} className="w-full p-1 rounded-md hover:bg-dark hover:text-lightest cursor-pointer" onClick={(e) => {setSelectedAspectOption((e.target as HTMLInputElement).value); setIsAspectOpen(false)}}>{item}</option>
                             )}
