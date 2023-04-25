@@ -2,15 +2,17 @@ import { useState } from "react";
 import { BiUndo, BiRedo } from "react-icons/bi";
 import { BsAspectRatioFill } from "react-icons/bs";
 import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai";
+import productImages from "../assets/productImages";
 
-export default function ProductEditor(){
+export default function ProductEditor(props: {productIndex: number, handleScroll: () => void}){
     return (
         <div className="w-[55%] flex flex-col px-6 py-2">
             <Controls />
-            <Editor />
+            <Editor productIndex={props.productIndex} />
             <div className="flex justify-center mt-4">
                 <button
                     className="px-16 py-2 text-lg bg-brand text-white hover:bg-dark rounded-sm"
+                    onClick={props.handleScroll}
                 >
                     Generate
                 </button>
@@ -66,11 +68,11 @@ function Controls(){
     )
 }
 
-function Editor(){
+function Editor(props: {productIndex: number}){
     return (
         <div className="flex items-center justify-center py-4">
-            <div className="w-full bg-light h-96 rounded-lg border border-dark flex items-center justify-center ">
-                <img src="/images/bulb.png" alt="product-image" className="w-48" />
+            <div className="w-full flex items-center justify-center bg-light h-96 rounded-lg border border-dark ">
+                <img src={productImages[props.productIndex].imageSrc} alt="product-image" className="w-48" />
             </div>
         </div>
     )

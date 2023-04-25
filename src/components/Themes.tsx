@@ -11,6 +11,10 @@ interface ThemeT{
 
 export default function Themes(){
     const [activeOption, setActiveOption] = useState("theme");
+    const [selectedThemeIndex, setSelectedThemeIndex] = useState(0);
+    const handleSelectedThemeIndex = (index: number) => {
+        setSelectedThemeIndex(index);
+    };
 
     return (
         <div className="w-[25%] flex flex-col items-center p-2">
@@ -37,6 +41,9 @@ export default function Themes(){
                                     key={index}
                                     image_url={theme.image_url}
                                     theme={theme.theme}
+                                    currentIndex={index}
+                                    selectedIndex={selectedThemeIndex}
+                                    handleSelect={handleSelectedThemeIndex}
                                 />
                             )
                         })}
@@ -78,15 +85,22 @@ export default function Themes(){
     )
 }
 
-function ThemePresets(props: {image_url: string, theme: string}){
+function ThemePresets(props: {image_url: string, theme: string, currentIndex:number, selectedIndex: number, handleSelect: (index: number) => void}){
     return(
-        <div className="relative w-28 cursor-pointer">
+        <div 
+            className={`relative w-28 h-28 flex items-center justify-center cursor-pointer ${props.currentIndex === props.selectedIndex && "sepia-0 bg-brand"}`}
+            onClick={() => 
+                props.handleSelect(props.currentIndex)
+            }
+        >
             <img 
                 src={props.image_url} 
                 alt={props.theme} 
-                className="w-28 h-28 "
+                className="w-[6.5rem] h-[6.5rem] "
             />
-            <div className="absolute w-full z-10 bottom-0 text-center text-lightest bg-dark/80">
+            <div 
+                className="absolute w-[6.5rem] z-10 bottom-[0.25rem] text-center text-lightest bg-dark/80"
+            >
                 {props.theme}
             </div>
         </div>

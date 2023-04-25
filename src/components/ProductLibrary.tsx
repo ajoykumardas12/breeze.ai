@@ -1,10 +1,11 @@
 import { MdPhotoLibrary } from "react-icons/md";
+import productImages from "../assets/productImages";
 
 interface ProductImageT{
     imageSrc: string
 }
 
-export default function ProductLibrary(){
+export default function ProductLibrary(props: {productIndex: number, handleSelectedProduct: (index: number) => void}){
     return (
         <div className="w-[20%] p-2">
             <div className="flex flex-col items-center justify-center border border-dark rounded-lg p-2">
@@ -16,12 +17,18 @@ export default function ProductLibrary(){
                     <AddProduct />
                     {productImages.map((productImage: ProductImageT, index) => {
                         return (
-                            <ProductImage key={index} imageSrc={productImage.imageSrc} />
+                            <div 
+                                key={index}
+                                className={`w-28 h-28 flex items-center justify-center cursor-pointer`}
+                                onClick={() => props.handleSelectedProduct(index)}
+                            >
+                                <ProductImage key={index} imageSrc={productImage.imageSrc} />
+                            </div>
                         )
                     })}
                 </div>
-                <div className="flex justify-center ">
-                    <button className="px-2 py-1 bg-alternateLight rounded-sm m-1 mt-2">
+                <div className="flex justify-center mt-2">
+                    <button className="px-2 py-1 bg-alternateLight rounded-sm m-1">
                         Load more products
                     </button>
                 </div>
@@ -41,32 +48,12 @@ function AddProduct(){
     )
 }
 
-const productImages = [
-    {
-        imageSrc: "/images/sofa.png"
-    },
-    {
-        imageSrc: "/images/purse.png"
-    },
-    {
-        imageSrc: "/images/perfume.png"
-    },
-    {
-        imageSrc: "/images/flower.png"
-    },
-    {
-        imageSrc: "/images/bulb.png"
-    }
-]
-
 function ProductImage(props: ProductImageT){
     return (
-        <div className="w-28 h-28 flex items-center justify-center cursor-pointer">
-            <img 
-                src={props.imageSrc} 
-                alt="product image"
-                className="object-fit max-w-full max-h-full"
-            />
-        </div>
+        <img 
+            src={props.imageSrc} 
+            alt="product image"
+            className="object-fit max-w-full max-h-full"
+        />
     )
 }
