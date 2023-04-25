@@ -1,10 +1,12 @@
-
+import Home from "./components/Home"
+import Nav from "./components/Nav"
 
 function App() {
   return (
-    <>
-      Breeze.ai
-    </>
+    <div className="font-poppins bg-lightest">
+      <Nav />
+      <Home />
+    </div>
   )
 }
 
