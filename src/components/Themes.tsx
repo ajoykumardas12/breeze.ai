@@ -96,10 +96,10 @@ function ThemePresets(props: {image_url: string, theme: string, currentIndex:num
             <img 
                 src={props.image_url} 
                 alt={props.theme} 
-                className="w-[6.5rem] h-[6.5rem] "
+                className="w-[6.3rem] h-[6.3rem] "
             />
             <div 
-                className="absolute w-[6.5rem] z-10 bottom-[0.25rem] text-center text-lightest bg-dark/80"
+                className="absolute w-[6.3rem] z-10 bottom-[0.35rem] text-center text-lightest bg-dark/80"
             >
                 {props.theme}
             </div>
