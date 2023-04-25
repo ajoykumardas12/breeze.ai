@@ -6,7 +6,7 @@ import ProductOutput from "./ProductOutput";
 export default function Home(){
     return (
         <div className="min-h-[calc(100vh-6rem)]">
-            <div>
+            <div className="flex ">
                 <ProductLibrary />
                 <ProductEditor />
                 <Themes />
